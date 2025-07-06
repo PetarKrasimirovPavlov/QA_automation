@@ -3,8 +3,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
+import pytest
 
 
+@pytest.mark.scenario1
 def test_flow_scenario_1():
     try:
         driver = setup()
@@ -78,6 +80,7 @@ def test_flow_scenario_1():
     finally:
         driver.quit()
 
+@pytest.mark.scenario2
 def test_flow_scenario_2():
     try:
         driver = setup()

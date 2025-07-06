@@ -44,7 +44,20 @@
    ```bash
    pip install -r requirements.txt
 
-4. Run tests with:
+4. Run tests:
 
-   ```bash
-   pytest -v
+   - To run all tests:
+
+     ```bash
+     pytest -v
+     ```
+
+   - To run only specific scenarios:
+
+     ```bash
+     pytest -m scenario1
+     ```
+
+     ```bash
+     pytest -m scenario2
+     ```
