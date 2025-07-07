@@ -51,13 +51,3 @@
      ```bash
      pytest -v
      ```
-
-   - To run only specific scenarios:
-
-     ```bash
-     pytest -m scenario1
-     ```
-
-     ```bash
-     pytest -m scenario2
-     ```

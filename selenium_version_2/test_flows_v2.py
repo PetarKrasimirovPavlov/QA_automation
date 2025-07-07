@@ -6,10 +6,11 @@ from selenium.webdriver.support.ui import Select
 import pytest
 
 
+
 @pytest.mark.scenario1
-def test_flow_scenario_1():
+def test_flow_scenario_1(setup):
     try:
-        driver = setup()
+        driver = setup
         standard_login(driver)
 
         product_list = extract_inventory(driver)
@@ -65,7 +66,7 @@ def test_flow_scenario_1():
         # Succesfull order checks
         assert "checkout-complete" in driver.current_url
         assert "Complete!" in driver.find_element(by=By.CLASS_NAME, value="title").text 
-        assert "Thank you for your order!" in driver.find_element(by=By.CLASS_NAME, value = "complete-header").text
+        assert "Thank you for your order!" in WebDriverWait(driver,5).until(EC.visibility_of_element_located((By.CLASS_NAME, "complete-header"))).text
 
         driver.find_element(by=By.CLASS_NAME, value = "shopping_cart_link").click()
 
@@ -81,9 +82,9 @@ def test_flow_scenario_1():
         driver.quit()
 
 @pytest.mark.scenario2
-def test_flow_scenario_2():
+def test_flow_scenario_2(setup):
     try:
-        driver = setup()
+        driver = setup
         standard_login(driver)
 
         # sorting by Price (high to low)
