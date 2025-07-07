@@ -5,7 +5,10 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def setup():
     options = webdriver.ChromeOptions()
-    options.add_experimental_option("detach", True)
+
+    # Uncomment bellow for testing purposes.
+    # options.add_experimental_option("detach", True)
+
     options.add_argument("--incognito")
     driver = webdriver.Chrome(options=options)
     driver.get("https://www.saucedemo.com/")

@@ -24,24 +24,35 @@ def setup(request):
 
     # get environment or default one
     base_url = os.getenv("BASE_URL", "https://www.saucedemo.com/")
+    headless = os.getenv("HEADLESS", "false").lower() == "true"
+    detach = os.getenv("DETACH", "false").lower() == "true"
 
     browser, resolution = request.param
     width, height = resolution
 
     if browser =="chrome":
         options = webdriver.ChromeOptions()
-        options.add_experimental_option("detach", True)
         options.add_argument("--incognito")
+        if detach:
+            options.add_experimental_option("detach", True)
+        if headless:
+            options.add_argument("--headless")
+            options.add_argument("--disable-gpu")
+            options.add_argument("--window-size={}x{}".format(width, height))
         driver = webdriver.Chrome(options=options)
     elif browser == "firefox":
         options = webdriver.FirefoxOptions()
         options.set_preference("browser.privatebrowsing.autostart", True)
+        if headless:
+            options.add_argument("--headless")
         driver = webdriver.Firefox(options=options)
 
     else:
         raise ValueError(f"Unsupported browser: {browser}")
 
-    driver.set_window_size(width=width, height=height)
+    if not headless:
+        driver.set_window_size(width=width, height=height)
+
     driver.get(base_url)
     yield driver
 
