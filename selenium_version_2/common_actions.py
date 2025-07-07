@@ -30,6 +30,9 @@ def setup(request):
     browser, resolution = request.param
     width, height = resolution
 
+    if headless:
+        detach=False
+
     if browser =="chrome":
         options = webdriver.ChromeOptions()
         options.add_argument("--incognito")

@@ -2,7 +2,7 @@
 
 
 
-## 🔧 Selenium Version 2 -
+## 🔧 Selenium Version 2
 
 ## Implemented Functionalities
 
@@ -35,6 +35,8 @@
 
 ---
 
+
+
 ## 🚀 How to Run the Tests
 
 1. ### Create a virtual environment:
@@ -60,13 +62,17 @@
    python run_tests.py
    ```
 
-   or for detach and headless mode (PowerShell):
+   or for detach mode (for testing purposes)(PowerShell):
    ```bash
-   $env:HEADLESS = "true"
    $env:DETACH = "true"
    python run_tests.py
    ```
 
+   or headless mode (PowerShell):
+   ```bash
+   $env:HEADLESS = "true"
+   python run_tests.py
+   ```
 
    ✅ To run only specific scenarios without generating report use:
 
@@ -77,3 +83,6 @@
      ```bash
      pytest -m scenario2
      ```
+5. ### UI notes:
+
+- The active_option UI element sometimes fails to update consistently during tests, causing intermittent assertion failures.

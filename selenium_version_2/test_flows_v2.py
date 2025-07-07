@@ -94,7 +94,8 @@ def test_flow_scenario_2(setup):
         select.select_by_visible_text("Price (high to low)")
 
         # Active sort option varification
-        assert "Price (high to low)" == driver.find_element(by=By.CLASS_NAME, value="active_option").text
+        assert "Price (high to low)" == WebDriverWait(driver,5).until(EC.visibility_of_element_located((By.CLASS_NAME, "active_option"))).text
+        
 
         # Verifying correct sequence
         prices = driver.find_elements(by=By.CLASS_NAME, value="inventory_item_price")
