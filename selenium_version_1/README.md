@@ -29,7 +29,7 @@
 
 ---
 
-## 🚀 How to Run the Tests
+## 🚀 How to Run
 
 1. Create a virtual environment:
 
@@ -48,9 +48,9 @@
 
    - To run all tests:
 
-     ```bash
-     pytest -v
-     ```
+   ```bash
+   pytest -v
+   ```
 5. ### Issues discovered during testing:
 
 - The active_option UI element sometimes fails(in low resolution most frequently) to update consistently during tests, causing assertion failures.
