@@ -5,9 +5,10 @@ import os
 base_url = os.getenv("BASE_URL", "https://reqres.in/")
 
 # create API Key instance
-api_key_headers = ApiKey(base_url)
+api_key = ApiKey(base_url)
+
 # create Action instance
-api = APIAction(base_url, api_key_headers)
+api = APIAction(base_url, api_key)
 
 
 def test_list_users():
@@ -67,7 +68,7 @@ def test_delete_new_user():
 
     creation_response = api.create_user(name, job)
 
-    # Note: Created user has fake id. API responds always with status code 204 for user deletion. 
+    # Note: Created user has fake id. API responds always with status code 204 for user deletion. Create + deletion flow is made for challange purposes.
     response = api.delete_user(creation_response.json()["id"])
 
     assert response.status_code == 204
