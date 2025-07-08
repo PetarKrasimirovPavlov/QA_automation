@@ -2,7 +2,6 @@ import os
 import subprocess
 from datetime import datetime
 
-
 # get environment as user input or use default
 env = input("Enter environment URL (or press Enter for default): ").strip()
 if not env:
@@ -15,7 +14,6 @@ report_path = f"report_{timestamp}.html"
 # Set env as environment variable
 env_vars = os.environ.copy()
 env_vars["BASE_URL"] = env
-
 
 cmd = ["pytest",
        "-n", "3",

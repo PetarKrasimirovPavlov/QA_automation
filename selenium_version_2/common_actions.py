@@ -59,6 +59,8 @@ def setup(request):
     driver.get(base_url)
     yield driver
 
+    teardown(driver)
+
 def standard_login(driver):
 
     username = driver.find_element(by=By.CLASS_NAME, value="login_credentials").text
@@ -87,9 +89,14 @@ def extract_cart(driver):
     cart_products_list = [product.text for product in cart_products]
     return cart_products_list
 
+def open_cart(driver):
+    cart_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CLASS_NAME, "shopping_cart_link")))
+    cart_button.click()
+
 def logout(driver):
     driver.find_element(by=By.ID, value = "react-burger-menu-btn").click()
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "logout_sidebar_link"))).click()
 
-
-
+def teardown(driver):
+    if driver is not None:
+        driver.quit()

@@ -56,7 +56,8 @@
 
    ✅ To run all tests with a custom HTML report (timestamped).
 
-   This will execute all tests in the `selenium_version_2/` folder and generate a self-contained HTML report with a timestamp inside `selenium_version_2/reports/`. No overwriting - reports history.
+   This will execute all tests in the `selenium_version_2/` folder with all fixtures and generate a self-contained HTML report with a timestamp inside `selenium_version_2/reports/`. No overwriting - reports history. When you run run_tests.py, you'll be prompted to enter the base URL (environment) to test on.
+   This gives you flexibility to test against different environments (e.g. staging, production, local).
 
    ```bash
    python run_tests.py
@@ -83,6 +84,7 @@
      ```bash
      pytest -m scenario2
      ```
-5. ### UI notes:
+5. ### Issues discovered during testing:
 
-- The active_option UI element sometimes fails to update consistently during tests, causing intermittent assertion failures.
+- The active_option UI element sometimes fails(in low resolution most frequently) to update consistently during tests, causing assertion failures.
+- The postal code input field accepts input consisting of letters only. This suggests missing or weak validation, as no country uses postal codes made up entirely of letters — most use either numeric or alphanumeric formats.

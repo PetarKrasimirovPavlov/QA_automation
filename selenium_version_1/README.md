@@ -51,3 +51,7 @@
      ```bash
      pytest -v
      ```
+5. ### Issues discovered during testing:
+
+- The active_option UI element sometimes fails(in low resolution most frequently) to update consistently during tests, causing assertion failures.
+- The postal code input form currently accepts letters and special characters (e.g., _, .). This suggests insufficient input validation, as no country uses postal codes composed only of letters or including special characters. Most countries use numeric or alphanumeric formats only.
