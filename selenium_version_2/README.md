@@ -56,7 +56,8 @@
 
    ✅ To run all tests with a custom HTML report (timestamped).
 
-   This will execute all tests in the `selenium_version_2/` folder with all fixtures and generate a self-contained HTML report with a timestamp inside `selenium_version_2/reports/`. No overwriting - reports history. When you run run_tests.py, you'll be prompted to enter the base URL (environment) to test on.
+   This will execute all tests in the `selenium_version_2/` folder with all fixtures and generate a self-contained HTML report with a timestamp inside `selenium_version_2/reports/`. No overwriting - reports history. 
+   - NOTE: When you run run_tests.py, you'll be prompted to enter the base URL (environment) to test on.
    This gives you flexibility to test against different environments (e.g. staging, production, local).
 
    ```bash
